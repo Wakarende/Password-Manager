@@ -36,6 +36,40 @@ class TestUsers(unittest.TestCase):
         test_user.save_user()
         self.assertEqual(len(Users.users_list), 2)
 
+    def test_delete_user(self):
+        """
+        test to see if we can remove a user from our user list
+        """
+        self.new_user.save_user()
+        test_user = Users("Test", "1111")
+        test_user.save_user()
+
+        self.new_user.delete_user()
+        self.assertEqual(len(Users.users_list), 1)
+
+    def test_find_user_by_username(self):
+        """
+        test to check if we can find a user by their username
+        """
+        self.new_user.save_user()
+        test_user = Users("Joy", "0000")
+        test_user.save_user()
+        found_user = Users.find_by_username("Joy")
+
+        self.assertEqual(found_user.password, test_user.password)
+
+    def test_user_exists(self):
+        """
+        Check to see if user exists
+        """
+        self.new_user.save_user()
+        test_user = Users("Test", "1111")
+        test_user.save_user()
+
+        user_exists = Users.user_exists("Test")
+
+        self.assertTrue(user_exists)
+
 
 if __name__ == '__main__':
     unittest.main()
