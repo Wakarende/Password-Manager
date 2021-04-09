@@ -47,3 +47,10 @@ class Users:
             if user.username == username:
                 return True
         return False
+
+    @classmethod
+    def display_users(cls):
+        """
+        method that returns the user list
+        """
+        return cls.users_list
