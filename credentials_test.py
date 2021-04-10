@@ -76,7 +76,7 @@ class TestCredentials(unittest.TestCase):
         test_credential.save_credential()
 
         credential_exists = Credentials.credential_exists("Temi")
-        self.assertEqual(credential_exists)
+        self.assertTrue(credential_exists)
 
 
 if __name__ == '__main__':
