@@ -49,11 +49,12 @@ def display_users():
 def main():
     print("Hello. Welcome to you password manager.What is your Name?")
     current_user = input()
-    print(f"Hello {current_user}.what would you like to do?")
+
+    print(f"Hello {current_user}. What would you like to do?")
     print('/n')
 
     while True:
-        print("User these short codes : cu - create user, delu - delete user, du - display users, fu - find user, ex - exit users")
+        print("Use these short codes : cu - create user, delu - delete user, du - display users, fu - find user, ex - exit users")
         short_code = input().lower()
 
         if short_code == 'cu':

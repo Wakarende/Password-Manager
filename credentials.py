@@ -21,3 +21,12 @@ class Credentials:
         method deletes a saved credential from credential_list
         """
         Credentials.credential_list.remove(self)
+
+    @classmethod
+    def find_by_credential_username(cls, user_name):
+        """
+        Method that takes in a username and returns a credential that matches the username
+        """
+        for credential in Credentials.credential_list:
+            if credential.user_name == user_name:
+                return credential

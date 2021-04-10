@@ -54,6 +54,30 @@ class TestCredentials(unittest.TestCase):
         self.new_credential.delete_credential()
         self.assertEqual(len(Credentials.credential_list), 1)
 
+    def test_find_credential_by_username(self):
+        """
+        Test to check if we can find a credential by username
+        """
+        self.new_credential.save_credential()
+        test_credential = Credentials("Instagram", "Temi", "1")
+        test_credential.save_credential()
+
+        found_credential = Credentials.find_by_credential_username("Temi")
+        self.assertEqual(found_credential.account_password,
+                         test_credential.account_password)
+
+    def test_credential_exists(self):
+        """
+        Test to check if a contact exists by returning a Boolean
+        """
+
+        self.new_credential.save_credential()
+        test_credential = Credentials("Instagram", "Temi", "1")
+        test_credential.save_credential()
+
+        credential_exists = Credentials.credential_exists("Temi")
+        self.assertEqual(credential_exists)
+
 
 if __name__ == '__main__':
     unittest.main()
