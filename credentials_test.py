@@ -43,7 +43,7 @@ class TestCredentials(unittest.TestCase):
         test_credential.save_credential()
         self.assertEqual(len(Credentials.credential_list), 2)
 
-    def test_delete_contact(self):
+    def test_delete_credential(self):
         """
         test to see if we can remove a credential
         """
@@ -62,7 +62,7 @@ class TestCredentials(unittest.TestCase):
         test_credential = Credentials("Instagram", "Temi", "1")
         test_credential.save_credential()
 
-        found_credential = Credentials.find_by_credential_username("Temi")
+        found_credential = Credentials.find_by_account("Instagram")
         self.assertEqual(found_credential.account_password,
                          test_credential.account_password)
 
@@ -75,8 +75,15 @@ class TestCredentials(unittest.TestCase):
         test_credential = Credentials("Instagram", "Temi", "1")
         test_credential.save_credential()
 
-        credential_exists = Credentials.credential_exists("Temi")
+        credential_exists = Credentials.credential_exists("Instagram")
         self.assertTrue(credential_exists)
+
+    def test_display_all_credentials(self):
+        """
+        method that returns a list of all credentials saved
+        """
+        self.assertEqual(Credentials.display_credentials(),
+                         Credentials.credential_list)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.9
 from users import Users
+from credentials import Credentials
 
 
 def create_user(username, password):
@@ -18,6 +19,13 @@ def save_user(users):
     users.save_user()
 
 
+def display_users():
+    """
+    function that returns all the saved users
+    """
+    return Users.display_users()
+
+
 def delete_user(users):
     """
     function to delete users
@@ -25,11 +33,11 @@ def delete_user(users):
     users.delete_user()
 
 
-def find_user(user):
+def find_by_username(users):
     """
     function that finds user by username
     """
-    user.find_user(username)
+    users.find_by_username(username)
 
 
 def check_existing_user(username):
@@ -39,11 +47,41 @@ def check_existing_user(username):
     return Users.user_exists(username)
 
 
-def display_users():
+def create_credential(account, user_name, account_password):
+    new_credential = Credentials(account, user_name, account_password)
+    return new_credential
+
+
+def save_credentials(credentials):
+    credentials.save_credential()
+
+
+def display_all_credentials():
     """
-    function that returns all the saved users
+    Functions that displays all saved credentials
     """
-    return Users.display_users()
+    return Credentials.display_all_credentials()
+
+
+def delete_credentials(credentials):
+    """
+    Function that deletes chosen credential
+    """
+    credentials.delete_credential()
+
+
+def find_credential(user_name):
+    """
+    Functions to find credential by username and returns credential
+    """
+    return Credentials.find_by_credential_username(user_name)
+
+
+def check_existing_credentials(user_name):
+    """
+    Functions that checks if credential exists with specified username and returns a Boolean
+    """
+    return Credentials.credential_exists(user_name)
 
 
 def main():
@@ -51,7 +89,7 @@ def main():
     current_user = input()
 
     print(f"Hello {current_user}. What would you like to do?")
-    print('/n')
+    print('\n')
 
     while True:
         print("Use these short codes : cu - create user, delu - delete user, du - display users, fu - find user, ex - exit users")
@@ -68,39 +106,41 @@ def main():
             password = input()
 
             save_user(create_user(username, password))
-            print('/n')
+            print('\n')
             print(f"New User {username} {password} created")
-            print('/n')
-
-        elif short_code == 'delu':
-            print("insert username you want to delete")
-            username = input()
-            if check_existing_user(username):
-                delete_user(find_user(username))
-                print("{username} account has been deleted")
+            print('\n')
 
         elif short_code == 'du':
 
             if display_users():
                 print("Here is a list of all the users")
-                print('/n')
+                print('\n')
 
                 for users in display_users():
                     print(f"{users.username} {users.password}")
-                print('/n')
+                print('\n')
 
             else:
-                print('/n')
+                print('\n')
                 print("You dont seem to have any users saved yet")
-                print('/n')
+                print('\n')
+        elif short_code == 'delu':
+            print("insert username you want to delete")
+            search_username = input()
+            if check_existing_user(search_username):
+                remove_user = find_by_username(search_username)
+                remove_user.delete_user()
+
+                print(f"{remove_user.username} account has been deleted")
 
         elif short_code == 'fu':
             print("Enter the username you want to search for")
 
-            search_username = input()
+            search_username = input().lower()
             if check_existing_user(search_username):
-                search_user = find_user(search_username)
-                print(f"{search_user.username}")
+                search_user = find_by_username(search_username)
+                print(f"User: {search_user.username}")
+                print(f"Password: {search_user.password}")
                 print('-'*20)
 
             else:

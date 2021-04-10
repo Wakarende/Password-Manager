@@ -1,3 +1,7 @@
+import string
+import random
+
+
 class Users:
     """
     Class that generates new instances of contacts.
@@ -33,9 +37,9 @@ class Users:
         user
         """
 
-        for user in Users.users_list:
-            if user.username == username:
-                return user
+        for users in cls.users_list:
+            if users.username == username:
+                return users
 
     @classmethod
     def user_exists(cls, username):
@@ -43,8 +47,8 @@ class Users:
         Method to check if user exists on user list
         Returns: Boolean depending if user exists
         """
-        for user in Users.users_list:
-            if user.username == username:
+        for users in cls.users_list:
+            if users.username == username:
                 return True
         return False
 

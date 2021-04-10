@@ -52,9 +52,9 @@ class TestUsers(unittest.TestCase):
         test to check if we can find a user by their username
         """
         self.new_user.save_user()
-        test_user = Users("Joy", "0000")
+        test_user = Users("Test", "1111")
         test_user.save_user()
-        found_user = Users.find_by_username("Joy")
+        found_user = Users.find_by_username("Test")
 
         self.assertEqual(found_user.password, test_user.password)
 

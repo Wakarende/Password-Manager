@@ -23,21 +23,28 @@ class Credentials:
         Credentials.credential_list.remove(self)
 
     @classmethod
-    def find_by_credential_username(cls, user_name):
+    def find_by_account(cls, account):
         """
         Method that takes in a username and returns a credential that matches the username
         """
-        for credential in Credentials.credential_list:
-            if credential.user_name == user_name:
+        for credential in cls.credential_list:
+            if credential.account == account:
                 return credential
 
     @classmethod
-    def credential_exists(cls, user_name):
+    def credential_exists(cls, account):
         """
         Method to check if credential exists in credential list
         """
 
-        for credential in Credentials.credential_list:
-            if credential.user_name == user_name:
+        for credential in cls.credential_list:
+            if credential.account == account:
                 return True
         return False
+
+    @classmethod
+    def display_credentials(cls):
+        """
+        Method that returns the credentials list
+        """
+        return cls.credential_list
