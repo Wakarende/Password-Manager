@@ -1,5 +1,37 @@
 #!/usr/bin/env python3.9
 from credentials import Credentials
+from users import Users
+
+
+def create_user(username, password):
+    """
+    Function to create a new user
+    """
+    new_user = Users(username, password)
+    return new_user
+
+
+def save_user(users):
+    """
+    Function to save user
+    """
+
+    users.save_user()
+
+
+def display_users():
+    """
+    function that returns all the saved users
+    """
+    return Users.display_users()
+
+
+def login_verify(username, password):
+    """
+    function that checks whether a user exist then logs them to the credentials section
+    """
+    check_user = Credentials.login_user(username, password)
+    return check_user
 
 
 def create_credential(account, user_name, account_password):
@@ -39,6 +71,14 @@ def check_existing_credentials(account):
     return Credentials.credential_exists(account)
 
 
+def generate_password(length):
+    """
+    generates a random password for the user
+    """
+    random_Password = Credentials.random_password()
+    return random_Password
+
+
 def main():
     print("Hello. Create your credentials account. But first, what is your name?")
     current_user = input().lower()
@@ -47,7 +87,7 @@ def main():
     print('\n')
 
     while True:
-        print("Use these short codes: cc - create new credential, dc - display credentials, delc - delete credential, fc - find credential, ex - exit account")
+        print("Use these short codes: cc - create new credential, dc - display credentials, delc - delete credential, fc - find credential,, ex - exit account")
         short_code = input().lower()
 
         if short_code == 'cc':
@@ -59,8 +99,19 @@ def main():
             print("Account username")
             user_name = input()
 
-            print("Account password")
-            account_password = input()
+            while True:
+                print(
+                    "choose tp - To type your own password: \n gp - To generate a random password")
+                choice_pwd == input().lower()
+                if choice_pwd == 'tp':
+                    print("Account password")
+                    account_password = input()
+                    break
+                elif choice_pwd == 'gp':
+                    account_password = generate_password(length)
+                    break
+                else:
+                    print("invalid password please try again")
 
             save_credentials(create_credential(
                 account, user_name, account_password))

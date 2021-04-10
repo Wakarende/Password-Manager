@@ -1,3 +1,7 @@
+import string
+import random
+
+
 class Credentials:
 
     credential_list = []
@@ -48,3 +52,21 @@ class Credentials:
         Method that returns the credentials list
         """
         return cls.credential_list
+
+    @classmethod
+    def verify_user(cls, username, password):
+        """
+        Method to check if user is on the user list
+        """
+        login_user = ""
+        for user in Users.users_list:
+            if(user.username == username and user.password == password):
+                login_user == user.username
+        return login_user
+
+    def random_password(length):
+        """
+        Method to generate random password
+        """
+        letters = string.ascii_letters
+        result_str = ''.join(random.choice(letters)for i in range(length))
