@@ -33,11 +33,11 @@ def delete_user(users):
     users.delete_user()
 
 
-def find_by_username(users):
+def find_by_username(username):
     """
     function that finds user by username
     """
-    users.find_by_username(username)
+    return Users.find_by_username(username)
 
 
 def check_existing_user(username):
@@ -136,7 +136,7 @@ def main():
         elif short_code == 'fu':
             print("Enter the username you want to search for")
 
-            search_username = input().lower()
+            search_username = input()
             if check_existing_user(search_username):
                 search_user = find_by_username(search_username)
                 print(f"User: {search_user.username}")

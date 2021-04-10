@@ -64,9 +64,10 @@ class Credentials:
                 login_user == user.username
         return login_user
 
-    def random_password(length):
+    def random_password(length=8):
         """
         Method to generate random password
         """
-        letters = string.ascii_letters
-        result_str = ''.join(random.choice(letters)for i in range(length))
+        password = string.ascii_letters
+        result_str = ''.join(random.choice(password)for i in range(8))
+        return result_str
