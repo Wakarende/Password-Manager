@@ -1,8 +1,6 @@
-
-
 class Users:
     """
-    Class that generates new instances of contacts.
+    Class that generates new instances of users.
     """
     users_list = []
 

@@ -23,7 +23,7 @@ class TestCredentials(unittest.TestCase):
 
     def test_save_credential(self):
         """
-        Test to see if the contact object is saved into the contact list
+        Test to see if the credential object is saved into the contact list
         """
         self.new_credential.save_credential()
         self.assertEqual(len(Credentials.credential_list), 1)
@@ -36,7 +36,7 @@ class TestCredentials(unittest.TestCase):
 
     def test_save_multiple_credentials(self):
         """
-        test to check if we can save multiple contact
+        test to check if we can save multiple credentials
         """
         self.new_credential.save_credential()
         test_credential = Credentials("Instagram", "Temi", "1")
@@ -68,7 +68,7 @@ class TestCredentials(unittest.TestCase):
 
     def test_credential_exists(self):
         """
-        Test to check if a contact exists by returning a Boolean
+        Test to check if a credential exists by returning a Boolean
         """
 
         self.new_credential.save_credential()

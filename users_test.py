@@ -4,7 +4,7 @@ from users import Users
 
 class TestUsers(unittest.TestCase):
     '''
-    Test class that defines test cases for the contact class behaviours.
+    Test class that defines test cases for the users class behaviours.
 
     '''
 
@@ -28,7 +28,7 @@ class TestUsers(unittest.TestCase):
 
     def test_save_mulitple_user(self):
         """
-        test to see if we can save multiple contact objects
+        test to see if we can save multiple user objects
 
         """
         self.new_user.save_user()
