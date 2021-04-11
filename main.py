@@ -125,7 +125,11 @@ def main():
                 print('\n')
 
                 for users in display_users():
-                    print(f"{users.username} {users.password}")
+                    print("-"*20)
+                    print(f"Username:{users.username}")
+                    print('\n')
+                    print(f"Password:{users.password}")
+                    print("-"*20)
                 print('\n')
 
             else:
@@ -139,7 +143,9 @@ def main():
             search_username = input()
             if check_existing_user(search_username):
                 search_user = find_by_username(search_username)
+                print("-"*20)
                 print(f"User: {search_user.username}")
+                print('\n')
                 print(f"Password: {search_user.password}")
                 print('-'*20)
 
@@ -162,9 +168,6 @@ def main():
             while True:
                 print("Use these short codes: cc - create new credential,dc - display credentials, delc - delete credential, fc - find credential, ex - exit account")
                 short_code = input().lower()
-
-                # if short_code == 'ex':
-                #     print(f"See ya! {username}")
 
                 if short_code == 'cc':
                     print("New Credential")
@@ -204,8 +207,7 @@ def main():
                             break
                         else:
                             print("You did not create a password. Please try again.")
-                            continue
-
+                            break
                 elif short_code == 'dc':
                     if display_credentials():
                         print("Here is a list of all your credentials")
@@ -215,12 +217,11 @@ def main():
                             print(
                                 f"{credentials.account} {credentials.user_name} {credentials.account_password}")
                             print('\n')
-
+                            break
                         else:
                             print('\n')
                             print("You dont seem to have any credentials saved yet")
                             print('\n')
-
                 elif short_code == 'delc':
                     print("Enter the credential-account you want to delete")
                     search_account = input()
