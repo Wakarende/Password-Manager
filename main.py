@@ -49,11 +49,17 @@ def login_verify(username, password):
 
 
 def create_credential(account, user_name, account_password):
+    """
+    Function to create new credential
+    """
     new_credential = Credentials(account, user_name, account_password)
     return new_credential
 
 
 def save_credentials(credentials):
+    """
+    Function to save all users
+    """
     credentials.save_credential()
 
 
@@ -111,7 +117,10 @@ def main():
             if len(password) >= 4:
                 save_user(create_user(username, password))
                 print('\n')
-                print(f"New User {username} {password} created")
+                print(f"New User created")
+                print("-"*20)
+                print(f"User: {username}")
+                print(f"Password: {password}")
                 print('\n')
 
             else:
@@ -127,7 +136,6 @@ def main():
                 for users in display_users():
                     print("-"*20)
                     print(f"Username:{users.username}")
-                    print('\n')
                     print(f"Password:{users.password}")
                     print("-"*20)
                 print('\n')
@@ -145,7 +153,6 @@ def main():
                 search_user = find_by_username(search_username)
                 print("-"*20)
                 print(f"User: {search_user.username}")
-                print('\n')
                 print(f"Password: {search_user.password}")
                 print('-'*20)
 
@@ -157,6 +164,7 @@ def main():
             print("-"*20)
             username = input("Username: ")
             password = input("Password: ")
+            print("-"*20)
 
             if check_existing_user(username):
                 print(
@@ -191,8 +199,14 @@ def main():
                             save_credentials(create_credential(
                                 account, user_name, account_password))
                             print('\n')
-                            print(
-                                f"New Credential:{account}, {user_name}, {account_password} created")
+                            print(f"New Credential:")
+                            print("-"*20)
+                            print(f"Account: {account} ")
+                            print('\n')
+                            print(f"Username: {user_name}")
+                            print('\n')
+                            print(f"Password: {account_password}")
+                            print("-"*20)
                             print('\n')
                             break
                         elif choice_pwd == 'gp':
@@ -200,9 +214,12 @@ def main():
                             print(f"New password is {account_password}")
                             save_credentials(create_credential(
                                 account, user_name, account_password))
-                            print('\n')
-                            print(
-                                f"New Credential:{account}, {user_name}, {account_password} created")
+                            print(f"New Credential:")
+                            print("-"*20)
+                            print(f"Account: {account} ")
+                            print(f"Username: {user_name}")
+                            print(f"Password: {account_password}")
+                            print("-"*20)
                             print('\n')
                             break
                         else:
@@ -214,8 +231,12 @@ def main():
                         print('\n')
 
                         for credentials in display_credentials():
-                            print(
-                                f"{credentials.account} {credentials.user_name} {credentials.account_password}")
+                            print("Here are all your credentials.")
+                            print("-"*20)
+                            print(f"Account: {credentials.account}")
+                            print(f"Username: {credentials.user_name}")
+                            print(f"Password: {credentials.account_password}")
+                            print("-"*20)
                             print('\n')
                             break
                         else:
@@ -223,7 +244,8 @@ def main():
                             print("You dont seem to have any credentials saved yet")
                             print('\n')
                 elif short_code == 'delc':
-                    print("Enter the credential-account you want to delete")
+                    print(
+                        "Enter the credential-account you want to delete e.g Twitter, Instagram etc.")
                     search_account = input()
                     if check_existing_credentials(search_account):
                         search_credential = find_credential(search_account)
