@@ -46,4 +46,5 @@ Email: joykirii@gmail.com
 
 ## License
 
+Licensed under the [MIT License](license).
 Copyright (c) 2021 Joy Kirii.
